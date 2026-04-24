@@ -24,6 +24,11 @@ try {
   process.exit(1);
 }
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/api/auth', authRoutes);
