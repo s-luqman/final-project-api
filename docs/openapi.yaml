@@ -146,7 +146,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     put:
       tags: [Users]
       summary: Update current user
@@ -225,7 +225,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     put:
       tags: [Users]
       summary: Update user by ID (admin only)
@@ -273,7 +273,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     delete:
       tags: [Users]
       summary: Delete user by ID (admin only)
@@ -305,7 +305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
 
   /api/products:
     get:
@@ -424,7 +424,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     put:
       tags: [Products]
       summary: Update product (admin only)
@@ -472,7 +472,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     delete:
       tags: [Products]
       summary: Delete product (admin only)
@@ -504,7 +504,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
 
   /api/categories:
     get:
@@ -623,7 +623,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     put:
       tags: [Categories]
       summary: Update category (admin only)
@@ -671,7 +671,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     delete:
       tags: [Categories]
       summary: Delete category (admin only)
@@ -703,7 +703,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
 
   /api/orders:
     get:
@@ -836,7 +836,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     put:
       tags: [Orders]
       summary: Replace order items (owner or admin)
@@ -880,7 +880,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
     delete:
       tags: [Orders]
       summary: Delete order (owner or admin)
@@ -912,7 +912,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/NotFoundErrorResponse'
 
 components:
   securitySchemes:
@@ -958,6 +958,14 @@ components:
         error:
           type: string
           example: Forbidden
+
+    NotFoundErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          example: Resource not found
 
     ValidationErrorResponse:
       type: object

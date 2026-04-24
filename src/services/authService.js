@@ -2,9 +2,16 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { createUser, findUserByEmail } from '../repositories/userRepo.js';
 
-export async function signUp(email, password) {
+export async function signUp({ name, email, password, role }) {
   const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = await createUser({ email, password: hashedPassword });
+  const fallbackName = (email?.split('@')[0] || 'User').trim();
+  const normalizedName = (name || fallbackName).trim();
+  const newUser = await createUser({
+    name: normalizedName,
+    email,
+    password: hashedPassword,
+    ...(role ? { role } : {}),
+  });
   return newUser;
 }
 
