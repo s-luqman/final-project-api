@@ -7,7 +7,10 @@ info:
     Authentication uses Bearer JWT tokens.
 
 servers:
-  - url: /
+  - url: http://localhost:3000
+    description: Local development servers
+  - url: https://final-project-api-y9dk.onrender.com
+    description: Production server
 
 tags:
   - name: Auth
