@@ -51,7 +51,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
 
   /api/auth/login:
     post:
@@ -188,7 +188,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
 
   /api/users/{id}:
     parameters:
@@ -270,7 +270,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
         '404':
           description: User not found
           content:
@@ -401,7 +401,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
 
   /api/products/{id}:
     parameters:
@@ -469,7 +469,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
         '404':
           description: Product not found
           content:
@@ -600,7 +600,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
 
   /api/categories/{id}:
     parameters:
@@ -668,7 +668,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ConflictErrorResponse'
         '404':
           description: Category not found
           content:
@@ -945,6 +945,14 @@ components:
         error:
           type: string
           example: Internal Server Error
+
+    ConflictErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          example: Resource already exists
 
     UnauthorizedErrorResponse:
       type: object
